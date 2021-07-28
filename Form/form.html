@@ -5,9 +5,9 @@
     <title>Fomulaire de recherche</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="styleindex.css" />
+    <link rel="stylesheet" href="styleform.css" />
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
     </style>
 </head>
 
@@ -16,23 +16,26 @@
 <body>
 
     <header class="Logo">
-        <h1>Poch'Lib</h1>
+        <section id="logo">
+            <img src="image/logo.png" alt="Poch'Lib" />
+        </section>
     </header>
 
 
-    <div>
+    <div class="newBook">
         <h1>Nouveau livre</h1>
 
         <form name="contact" method="POST" data-netlify="true">
 
             <div>
                 <label>Titre du livre</label>
+            </br>
                 <input type="text" required />
             </div>
 
-
             <div>
                 <label>Auteur</label>
+            </br>
                 <input type="text" required />
             </div>
 
@@ -46,7 +49,7 @@
 
     </div>
 
-    <div>
+    <div class="pochList">
         <h1>Ma poch'liste</h1>
     </div>
 
