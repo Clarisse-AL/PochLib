@@ -4,13 +4,6 @@ img
     height: 200px;
     display: flex;
     margin: auto;
-
-}
-
-div
-{
-    border-top: 1px solid grey;
-    margin-bottom: 40px;
 }
 
 h1
@@ -20,13 +13,80 @@ h1
     text-align: center;
 }
 
-button
+label
+{
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+input
+{
+    border: 1px solid grey;
+    border-radius: 5%;
+    
+}
+
+.newBook, .pochlist
+{
+    border-top: 1px solid grey;
+    margin: 15px 0px 15px 0px;
+    display: block;
+}
+
+.form
+{
+    border-top: 1px solid grey;
+    margin: 15px 0px 15px 0px;
+    display: none;
+}
+
+.btnNewBook
 {
     background-color: #14aca4;
     color: white;
-    border: 0ch;
-    border-radius: 6%;
-    display: flex;
-    margin: auto;
+    border: none;
+    border-radius: 5px;
     padding: 10px 20px 10px 20px;
+    display: flex;
+    margin: auto;  
 }
+
+.btnResearch
+{
+    background-color: #14aca4;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    margin: 15px 0px 15px 0px;
+}
+.btnCancel
+{
+    background-color: hsl(11, 70%, 51%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+    margin: 15px 0px 15px 0px;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 1440px) {
+    
+ }
+
+@media screen and (max-width: 900px) {
+   
+ }
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 667px) {
+        
+ }
+  
