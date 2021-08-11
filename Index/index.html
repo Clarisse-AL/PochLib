@@ -9,33 +9,37 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 	</style>
+	<script src="scriptindex.js"></script>
+
+	<script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+
 </head>
 
 <body>
 
 	<header class="Logo">
-		<section id="logo">
+		<div class="logo">
 			<img src="image/logo.png" alt="Poch'Lib" />
-		</section>
+		</div>
 	</header>
 
 	<div class="newBook">
 		<h1>Nouveau Livre</h1>
-		<input class="btnNewBook" type="submit" value="Ajouter un nouveau livre" />
+		<input class="btnNewBook" type="submit" value="Ajouter un livre" />
 	</div>
 
 	<div class="pochlist">
 		<h1>Ma poch'liste</h1>
-		<div class="bookmark">
+		<div id="bookList">
 		</div>
 	</div>
 
 	<div class="form">
 		<h1>Nouveau livre</h1>
-		<form name="contact" method="POST" action="">
+		<form>
 			<div>
 				<label for="titre">Titre du livre</label>
-				<br/>
+				<br />
 				<input type="search" name="titre" id="titre" required />
 			</div>
 			<div>
@@ -44,14 +48,19 @@
 				<input type="search" name="auteur" id="auteur" required />
 			</div>
 			<div>
-				<input class="btnResearch" type="submit" value="Rechercher" />
+				<input class="btnSearch" type="submit" value="Rechercher" />
 			</div>
 			<div>
 				<input class="btnCancel" type="reset" value="Annuler" />
 			</div>
 		</form>
+		<div class="searchResult">
+
+		</div>
+
 	</div>
 
+	
 </body>
 
 </html>
