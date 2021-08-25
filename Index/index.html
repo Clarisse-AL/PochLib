@@ -9,15 +9,14 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 	</style>
-	<script src="scriptindex.js"></script>
 
-	<script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+
 
 </head>
 
 <body>
 
-	<header class="Logo">
+	<header>
 		<div class="logo">
 			<img src="image/logo.png" alt="Poch'Lib" />
 		</div>
@@ -25,42 +24,47 @@
 
 	<div class="newBook">
 		<h1>Nouveau Livre</h1>
-		<input class="btnNewBook" type="submit" value="Ajouter un livre" />
-	</div>
-
-	<div class="pochlist">
-		<h1>Ma poch'liste</h1>
-		<div id="bookList">
-		</div>
+		<button class="btnNewBook">Ajouter un livre</button>
 	</div>
 
 	<div class="form">
-		<h1>Nouveau livre</h1>
+		<h1>Nouveau Livre</h1>
 		<form>
 			<div>
-				<label for="titre">Titre du livre</label>
+				<label for="title">Titre du livre</label>
 				<br />
-				<input type="search" name="titre" id="titre" required />
+				<input class="valueTitle" type="search" name="title" id="title" accesskey="enter" required/>
 			</div>
 			<div>
-				<label for="auteur">Auteur</label>
+				<label for="author">Auteur</label>
 				<br>
-				<input type="search" name="auteur" id="auteur" required />
+				<input class="valueAuthor" type="search" name="author" id="author" accesskey="enter" />
 			</div>
 			<div>
-				<input class="btnSearch" type="submit" value="Rechercher" />
+				<input type="submit" class="btnSearchBooks" value="Rechercher">
 			</div>
 			<div>
-				<input class="btnCancel" type="reset" value="Annuler" />
+				<input type="reset" class="btnCancel" value="Annuler">
 			</div>
 		</form>
-		<div class="searchResult">
 
+		
+		<div class="bookList">
+			
 		</div>
 
 	</div>
 
-	
+	<div class="bookshelf">
+		<h1>Ma poch'liste</h1>
+	</div>
+
+
+	<script src="scriptindex.js"></script>
+	<!-- <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
+	<script type="text/javascript">google.books.load({ "language": "fr" });</script> -->
+
+
 </body>
 
 </html>

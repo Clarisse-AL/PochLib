@@ -32,14 +32,14 @@ input
 {
     border-top: 1px solid grey;
     margin: 15px 0px 15px 0px;
-    display: block;
+
 }
 
 .form
 {
     border-top: 1px solid grey;
     margin: 15px 0px 15px 0px;
-    display: none;
+    /* display: none; */
 }
 
 .btnNewBook
@@ -53,7 +53,7 @@ input
     margin: auto;  
 }
 
-.btnResearch
+.btnSearchBooks
 {
     background-color: #14aca4;
     color: white;
@@ -70,6 +70,12 @@ input
     border-radius: 5px;
     padding: 10px 20px 10px 20px;
     margin: 15px 0px 15px 0px;
+}
+
+.viewerCanvas
+{
+    width: 150px;
+    height: 125px;
 }
 
 /* Media queries */
