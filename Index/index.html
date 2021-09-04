@@ -9,6 +9,7 @@
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 	</style>
+	<script src="https://kit.fontawesome.com/cc97aeee49.js" crossorigin="anonymous"></script>
 
 
 
@@ -33,12 +34,12 @@
 			<div>
 				<label for="title">Titre du livre</label>
 				<br />
-				<input class="valueTitle" type="search" name="title" id="title" accesskey="enter" required/>
+				<input class="valueTitle" type="search" name="title" id="title" accesskey="enter" required />
 			</div>
 			<div>
 				<label for="author">Auteur</label>
 				<br>
-				<input class="valueAuthor" type="search" name="author" id="author" accesskey="enter" />
+				<input class="valueAuthor" type="search" name="author" id="author" accesskey="enter"/>
 			</div>
 			<div>
 				<input type="submit" class="btnSearchBooks" value="Rechercher">
@@ -48,12 +49,16 @@
 			</div>
 		</form>
 
-		
-		<div class="bookList">
-			
+		<div class="searchResult">
+			<h1>Résultat de la recherche</h1>
+			<div class="booksList">
+
+			</div>
 		</div>
 
 	</div>
+
+
 
 	<div class="bookshelf">
 		<h1>Ma poch'liste</h1>
@@ -61,9 +66,7 @@
 
 
 	<script src="scriptindex.js"></script>
-	<!-- <script type="text/javascript" src="https://www.google.com/books/jsapi.js"></script>
-	<script type="text/javascript">google.books.load({ "language": "fr" });</script> -->
-
+	
 
 </body>
 
