@@ -19,17 +19,6 @@ btnCancel.addEventListener('click', function cancel() {
         window.location.reload();
 });
 
-//********changement d'icone click ********/
-// const iconFavorite = document.querySelector('.iconFavorite');
-
-// iconFavorite.addEventListener('click', function save(e) {
-//         e.preventDefault();
-//         iconFavorite.style.boxShadow = "10px 5px 5px grey";
-
-// });
-
-// save();
-
 
 //*********ACCES API*********/
 
@@ -86,7 +75,7 @@ function createBook(book) {
         let imgBook = "";
         let authors = "";
 
-        if (book.volumeInfo.title)
+        if (book)
 
                 if (book.volumeInfo.authors === undefined || book.volumeInfo.authors === null
                         && book.volumeInfo.description === undefined || book.volumeInfo.description === null
@@ -101,17 +90,38 @@ function createBook(book) {
                 };
 
         bookCard.innerHTML = `
-        <h3 class="title">${book.volumeInfo.title}</h3>
+        <header>
+        <div class="iconFavorite"><i class="far fa-bookmark"></i></div>        
+        <h3 class="title">${book.volumeInfo.title}</h3>   
+        <header>
         <h4 class="authors">${authors}</h4>
         <p class="idBook" >ID : ${book.id}<p>
         <p class="description">${description}...</p><br>
         <img class="imgBook" src="${imgBook}">
-        <div class="iconFavorite"><i class="fas fa-bookmark"></i></div>
         `;
 
         booksList.appendChild(bookCard);
 
 };
+
+
+//*****Ajout dans les favoris *********//
+let iconFavorite = document.querySelector('.header');
+console.log(iconFavorite);
+
+iconFavorite.addEventListener('click', function addPochlist(e){
+        e.preventDefault();
+
+
+        console.log("ok");
+        iconFavorite.innerHTML = `<i class="fas fa-bookmark"></i>`;
+        alert("Ce livre à correctement été ajouté dans votre Poch'List");
+});
+
+
+
+
+
 
 
 

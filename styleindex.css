@@ -104,38 +104,25 @@ section{
     height: 125px;
 }
 
-
-/* Media queries */
-
-@media screen and (max-width: 1440px) {
-    
- }
-
-@media screen and (max-width: 900px) {
-   
- }
-
-@media screen and (max-width: 768px) {
-    
-}
-
-@media screen and (max-width: 667px) {
-    .iconFavorite
+.iconFavorite
     {
         display: block;
         font-size: 28px;
-        color: #14aca4;
+        color: #14aca4; 
         position: relative;
-        bottom: 100%;
+        bottom: 20%;
         left: 92%;
     }
 
-    .booksList{
+.booksList
+    {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-gap: 5px;
     }
-    section{
+
+section
+{
         font-family: 'Roboto', sans-serif;
         font-weight: 900;
         text-align: justify;
@@ -146,14 +133,33 @@ section{
         
     }
     
-    .idBook{
+.idBook
+{
         font-style: italic;
         font-size: small;
-    }
+}
     
-    .imgBook{
-        width: auto;
-    }
-       
+.imgBook
+{
+    width: auto;
+}
+
+/* Media queries */
+
+@media screen and (max-width: 2560px) {
+    
+}
+
+@media screen and (max-width: 900px) {
+   
  }
-  
+
+@media screen and (max-width: 768px) {
+    
+}
+
+@media screen and (max-width: 415px) {
+    
+       
+}
+   
