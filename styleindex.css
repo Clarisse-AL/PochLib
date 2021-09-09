@@ -98,13 +98,7 @@ section{
     margin: 15px 0px 15px 0px;
 }
 
-.viewerCanvas
-{
-    width: 150px;
-    height: 125px;
-}
-
-.iconFavorite
+.bookmark
     {
         display: block;
         font-size: 28px;
@@ -121,18 +115,7 @@ section{
         grid-gap: 5px;
     }
 
-section
-{
-        font-family: 'Roboto', sans-serif;
-        font-weight: 900;
-        text-align: justify;
-        box-shadow: 10px 5px 5px grey;
-        padding: 20px;
-        border-radius: 5px;
-        margin: 8px 8px 8px 8px;
-        
-    }
-    
+
 .idBook
 {
         font-style: italic;
@@ -142,6 +125,16 @@ section
 .imgBook
 {
     width: auto;
+}
+
+.trash{
+    display: block;
+    font-size: 28px;
+    color: #14aca4; 
+    position: relative;
+    bottom: 20%;
+    left: 92%;
+
 }
 
 /* Media queries */
