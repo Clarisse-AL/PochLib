@@ -128,15 +128,6 @@ section{
     width: auto;
 }
 
-.trash{
-    display: block;
-    font-size: 28px;
-    color: #14aca4; 
-    position: relative;
-    bottom: 20%;
-    left: 92%;
-
-}
 
 /* Media queries */
 
