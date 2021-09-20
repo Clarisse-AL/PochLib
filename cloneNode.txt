@@ -1,0 +1,29 @@
+/***********ENREGISTREMENT DES LIVRES DANS LA POCH'LIST ******************/
+
+
+
+//function storageBook(bookId) {
+
+//                 //enregistrer le livre dans le sessionStorage
+//                 const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
+//                 let setBooksId = sessionStorage.setItem(bookId, apiGoogleBooks);
+//                 console.log(setBooksId);
+
+//                 let favoriteBook = document.createElement('section');
+//                 favoriteBook.className = 'favoriteBook';
+//                 let bookCard = document.querySelector('.bookCard');
+               
+//                 // remplacer le bookmark par une corbeille
+//                 let iconBookmark = document.querySelector('.iconBookmark');
+//                 let iconTrash = document.createElement('div');
+//                 iconTrash.className = 'iconTrash';
+//                 iconTrash.innerHTML = '<i class="fas fa-trash" onclick="removeFavoriteBook(bookId)"></i>';
+//                 iconBookmark.replaceWith(iconTrash);
+
+//                 //cloner le bookCard dans la pochlist
+//                 favoriteBook = bookCard.cloneNode(true);
+//                 let bookshelf = document.querySelector('.bookshelf').appendChild(favoriteBook);
+
+//                 // alert("Ce livre fait déjà parti de votre sélection");             
+                
+// };
