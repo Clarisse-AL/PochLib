@@ -1,4 +1,4 @@
-img
+.logo
 {
     width: 200px;
     height: 200px;
@@ -52,6 +52,10 @@ section{
 
 .imgBook{
     width: auto;
+    height: 200px;
+    display: flex;
+    margin: auto;
+    top: 5%;
 }
 
 
@@ -128,15 +132,7 @@ section{
     width: auto;
 }
 
-.trash{
-    display: block;
-    font-size: 28px;
-    color: #14aca4; 
-    position: relative;
-    bottom: 20%;
-    left: 92%;
 
-}
 
 /* Media queries */
 

@@ -1,4 +1,6 @@
 
+
+
 // ****************AFFICHER-MASQUER FORMULAIRE*****************//
 const form = document.querySelector('.form');
 const newBook = document.querySelector('.newBook');
@@ -16,6 +18,7 @@ btnNewBook.addEventListener('click', function showForm() {
 btnCancel.addEventListener('click', function cancel() {
         form.style.display = 'none';
         newBook.style.display = 'block';
+        
 });
 
 
@@ -55,6 +58,8 @@ const fetchBook = () => {
                         }
                         else {
                                 data.items.forEach((book) => {
+                                        let booksList = document.querySelector('.booksList');
+                                        booksList.innerHTML = "";
                                         createBook(book); // création des livres
                                 });
                         }
@@ -72,6 +77,8 @@ function createBook(book) {
         let booksList = document.querySelector('.booksList');
         let booksCard = document.createElement('section');
         booksCard.className = 'bookCard';
+        booksCard.setAttribute("id", book.id);
+
         let description = "";
         let imgBook = "";
         let authors = "";
@@ -98,7 +105,7 @@ function createBook(book) {
         <h4 class="authors">${authors}</h4>
         <p class="idBook" >ID : ${book.id}<p>
         <p class="description">${description}...</p><br>
-        <img class="imgBook" src="${imgBook}" style="width: auto;">
+        <img class="imgBook" src="${imgBook}">
         `;
 
         booksList.appendChild(booksCard);
@@ -108,84 +115,47 @@ function createBook(book) {
 
 //***********FETCH POUR SELECTIONNER LES LIVRES FAVORIS ******************/
 
+function storageBook(bookId) {
 
-const storageBook = (bookId) => {
-        let search = bookId;
-        const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
-        let setBooksInfo = sessionStorage.setItem(search, apiGoogleBooks);
-
-        
-        fetch(apiGoogleBooks)
-                .then(function (res) {
-                        if (res.ok) {
-                                return res.json();
-                        }
-                })
-                .then(function (data) {
-                        console.log(data)
-
-                        if (data.items.id === bookId) {
-                                alert('Ce livre fait déjà partie de vos favoris')
-                        } else {
-                                data.items.forEach((book) => {
-                                        favoriteBooks(book); //création des livres favoris
-                                });
-                        }
-                })
-                .catch(function (error) {
-                        console.error("erreur :" + error);
-
-                })
-};
-
-//***********CREATION DES LIVRES DANS LA POCH'LIST ******************/
+        const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
+        let setBooksInfo = localStorage.setItem(bookId, apiGoogleBooks);
 
 
-function favoriteBooks(book) {
-        let bookshelf = document.querySelector('.bookshelf');
+        //cloner le bookCard dans la pochlist
         let favoriteBook = document.createElement('section');
-        let description = "";
-        let imgBook = "";
-        let authors = "";
+        favoriteBook.setAttribute("id", bookId);
+        favoriteBook = document.getElementById(bookId);
+        let booksCard = document.getElementById(bookId);
+        let bookshelf = document.querySelector('.bookshelf');
 
-        if (book)
-
-                if (book.volumeInfo.authors === undefined || book.volumeInfo.authors === null
-                        && book.volumeInfo.description === undefined || book.volumeInfo.description === null
-                        && book.volumeInfo.imageLinks === undefined || book.volumeInfo.imageLinks === null) {
-                        authors = "Information manquante";
-                        description = "Information manquante";
-                        imgBook = "image/unavailable.png";
-                } else {
-                        authors = book.volumeInfo.authors[0];
-                        description = book.volumeInfo.description.substring(0, 200);
-                        imgBook = book.volumeInfo.imageLinks.thumbnail;
-                };
-
-        favoriteBook.innerHTML = `
-        <header>
-        <div class="iconTrash"><i class="fas fa-trash" onclick="removeFavoriteBook('${book.id}')"></i></div>        
-        <h3 class="title">${book.volumeInfo.title}</h3>   
-        </header>
-        <h4 class="authors">${authors}</h4>
-        <p class="idBook" >ID : ${book.id}<p>
-        <p class="description">${description}...</p><br>
-        <img class="imgBook" src="${imgBook}" style="width: auto;">
-        `;
-
+        favoriteBook = booksCard.cloneNode(true);
         bookshelf.appendChild(favoriteBook);
 
+        // remplacer le bookmark par une corbeille
+        let iconBookmark = favoriteBook.querySelector('.iconBookmark');
+        let iconTrash = document.createElement('div');
+        iconTrash.className ='iconTrash';
+        iconTrash.innerHTML = `<i class="fas fa-trash" onclick="removeFavoriteBook()"></i>`;
+        iconBookmark.replaceWith(iconTrash);
+        
+        
+        // alert("Ce livre fait déjà parti de votre sélection");             
 };
+
 
 //***********RETIRER UN LIVRE DE LA POCHLIST ******************/
 
-function removeFavoriteBook(bookId){
-        let favoriteBook = document.querySelector('.favoriteBook');
-        let bookshelf = document.querySelector('.bookshelf');
 
-        sessionStorage.removeItem(bookId);
-        bookshelf.removeChild(favoriteBook);
+// function removeFavoriteBook() {
         
-}
 
+//         let favoriteBook = document.getElementById(bookId);
+//         console.log(bookId);
+//         let bookshelf = document.querySelector('.bookshelf');
 
+//         localStorage.removeItem(bookId);
+//         bookshelf.removeChild(favoriteBook);
+
+// }
+
+// window.onload = storageBook();
