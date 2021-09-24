@@ -1,3 +1,5 @@
+window.onload
+
 // ****************AFFICHER-MASQUER FORMULAIRE*****************//
 const form = document.querySelector('.form');
 const newBook = document.querySelector('.newBook');
@@ -16,6 +18,7 @@ btnNewBook.addEventListener('click', function showForm() {
 btnCancel.addEventListener('click', function cancel() {
         form.style.display = 'none';
         newBook.style.display = 'block';
+        
 });
 
 //*********LANCER UNE RECHERCHE*********/
@@ -68,8 +71,8 @@ btnSearchBooks.addEventListener('click', function (e) {
 
 });
 
-
 //*********Création des sections livres pour le résultat de la recherche*********/
+
 function createBook(book) {
         let booksCard = document.createElement('section');
         booksCard.className = 'bookCard';
@@ -96,12 +99,12 @@ function createBook(book) {
         booksCard.innerHTML = `
         <header>
         <div class="iconBookmark" ><i class="fas fa-bookmark" onclick = storageBook('${book.id}')></i></div>        
-        <h3 class="title">${book.volumeInfo.title}</h3>   
         </header>
-        <h4 class="authors">${authors}</h4>
-        <p class="idBook" >ID : ${book.id}<p>
-        <p class="description">${description}...</p><br>
-        <img class="imgBook" src="${imgBook}">
+        <div class="title"><h3>${book.volumeInfo.title}</h3></div> 
+        <div class="authors"><h4>${authors}</h4></div>
+        <div class="idBook"><p>ID : ${book.id}<p></div>
+        <div class="description"><p>${description}...</p></div>
+        <div class="imgBook"><img src="${imgBook}"></div>
         `;
 
         booksList.appendChild(booksCard);
@@ -109,35 +112,39 @@ function createBook(book) {
 };
 
 
-//***********FONCTION POUR SELECTIONNER LES LIVRES FAVORIS ******************/
+//***********FONCTION POUR ENREGISTRER LES LIVRES FAVORIS ******************/
 
 function storageBook(bookId) {
 
         const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
         sessionStorage.setItem(bookId, apiGoogleBooks);
 
-        //cloner le bookCard dans la pochlist
-        let favoriteBook = document.createElement('section');
-        favoriteBook.setAttribute("id", bookId);
-        favoriteBook = document.getElementById(bookId);
-        let booksCard = document.getElementById(bookId);
-        let bookshelf = document.querySelector('.bookshelf');
+        if (bookId === sessionStorage.getItem(bookId)) {
+                alert('Vous ne pouvez ajouter deux fois le même livre')
+        } else {
 
-        favoriteBook = booksCard.cloneNode(true);
-        bookshelf.appendChild(favoriteBook);
+                //cloner le bookCard dans la pochlist
+                let favoriteBook = document.createElement('section');
+                favoriteBook.setAttribute("id", bookId);
+                favoriteBook = document.getElementById(bookId);
+                let booksCard = document.getElementById(bookId);
+                let bookshelf = document.querySelector('.bookshelf');
 
-        // remplacer le bookmark par une corbeille
-        let iconBookmark = favoriteBook.querySelector('.iconBookmark');
-        let iconTrash = document.createElement('div');
-        iconTrash.className = 'iconTrash';
-        iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
-        iconBookmark.replaceWith(iconTrash);
+                favoriteBook = booksCard.cloneNode(true);
+                bookshelf.appendChild(favoriteBook);
 
+                // remplacer le bookmark par une corbeille
+                let iconBookmark = favoriteBook.querySelector('.iconBookmark');
+                let iconTrash = document.createElement('div');
+                iconTrash.className = 'iconTrash';
+                iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
+                iconBookmark.replaceWith(iconTrash);
 
-        //supprimer le favoriteBook de la pochlist et du sessionStorage
-        iconTrash.addEventListener('click', function removeFavoriteBook() {
-                favoriteBook.parentElement.removeChild(favoriteBook);
-                sessionStorage.removeItem(bookId);
-        });
+                //supprimer le favoriteBook de la pochlist et du sessionStorage
+                iconTrash.addEventListener('click', function removeFavoriteBook() {
+                        favoriteBook.parentElement.removeChild(favoriteBook);
+                        sessionStorage.removeItem(bookId);
+                });
+        }
 
 };
