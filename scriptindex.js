@@ -1,6 +1,3 @@
-
-
-
 // ****************AFFICHER-MASQUER FORMULAIRE*****************//
 const form = document.querySelector('.form');
 const newBook = document.querySelector('.newBook');
@@ -12,69 +9,68 @@ const btnCancel = document.querySelector('.btnCancel')
 btnNewBook.addEventListener('click', function showForm() {
         form.style.display = 'block';
         newBook.style.display = 'none';
+        booksList.innerHTML = "";
 });
 
 //revenir à l'accueil - masquer formulaire
 btnCancel.addEventListener('click', function cancel() {
         form.style.display = 'none';
         newBook.style.display = 'block';
-        
 });
-
 
 //*********LANCER UNE RECHERCHE*********/
 
 const btnSearchBooks = document.querySelector('.btnSearchBooks');
-let search = '';
-
+let booksList = document.querySelector('.booksList');
 
 btnSearchBooks.addEventListener('click', function (e) {
         e.preventDefault();
+
+        const fetchBook = () => {
+                let valueTitle = document.querySelector('.valueTitle').value;
+                let valueAuthors = document.querySelector('.valueAuthor').value;
+
+                const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` +
+                        valueTitle +
+                        '+inauthor:' +
+                        valueAuthors +
+                        '&key=AIzaSyBzPLXXa28wePRlPydq-cwJUNk1sP7W4Hg';
+
+                fetch(apiGoogleBooks)
+                        .then(function (res) {
+                                if (res.ok) {
+                                        return res.json();
+                                }
+                        })
+                        .then(function (data) {
+                                console.log(data)
+                                if (valueTitle == "" || valueTitle == undefined) {
+                                        alert("Merci de renseigner le titre du livre");
+                                }
+                                else if (data.totalItems === 0) {
+
+                                        alert("Aucun Résultat");
+                                }
+                                else {
+                                        booksList.innerHTML = "";
+                                        data.items.forEach((book) => {
+                                                createBook(book); // création des livres
+                                        });
+                                }
+                        })
+                        .catch(function (error) {
+                                console.error("erreur :" + error);
+
+                        })
+        };
+
         fetchBook();
+
 });
 
-//*********FECTCH POUR ACCEDER A L'API*********/
-
-const fetchBook = () => {
-        let valueTitle = document.querySelector('.valueTitle').value;
-        let valueAuthors = document.querySelector('.valueAuthor').value;
-        search = valueTitle + '+inauthor:' + valueAuthors + '&key=AIzaSyBzPLXXa28wePRlPydq-cwJUNk1sP7W4Hg'
-        const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
-
-        fetch(apiGoogleBooks)
-                .then(function (res) {
-                        if (res.ok) {
-                                return res.json();
-                        }
-                })
-                .then(function (data) {
-                        console.log(data)
-                        if (valueTitle == "" || valueTitle == undefined) {
-                                alert("Merci de renseigner le titre du livre");
-                        }
-                        else if (data.totalItems === 0) {
-
-                                alert("Aucun Résultat");
-                        }
-                        else {
-                                data.items.forEach((book) => {
-                                        let booksList = document.querySelector('.booksList');
-                                        booksList.innerHTML = "";
-                                        createBook(book); // création des livres
-                                });
-                        }
-                })
-                .catch(function (error) {
-                        console.error("erreur :" + error);
-
-                })
-};
 
 //*********Création des sections livres pour le résultat de la recherche*********/
-
-
 function createBook(book) {
-        let booksList = document.querySelector('.booksList');
         let booksCard = document.createElement('section');
         booksCard.className = 'bookCard';
         booksCard.setAttribute("id", book.id);
@@ -113,13 +109,12 @@ function createBook(book) {
 };
 
 
-//***********FETCH POUR SELECTIONNER LES LIVRES FAVORIS ******************/
+//***********FONCTION POUR SELECTIONNER LES LIVRES FAVORIS ******************/
 
 function storageBook(bookId) {
 
         const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
-        let setBooksInfo = localStorage.setItem(bookId, apiGoogleBooks);
-
+        sessionStorage.setItem(bookId, apiGoogleBooks);
 
         //cloner le bookCard dans la pochlist
         let favoriteBook = document.createElement('section');
@@ -134,28 +129,15 @@ function storageBook(bookId) {
         // remplacer le bookmark par une corbeille
         let iconBookmark = favoriteBook.querySelector('.iconBookmark');
         let iconTrash = document.createElement('div');
-        iconTrash.className ='iconTrash';
-        iconTrash.innerHTML = `<i class="fas fa-trash" onclick="removeFavoriteBook()"></i>`;
+        iconTrash.className = 'iconTrash';
+        iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
         iconBookmark.replaceWith(iconTrash);
-        
-        
-        // alert("Ce livre fait déjà parti de votre sélection");             
+
+
+        //supprimer le favoriteBook de la pochlist et du sessionStorage
+        iconTrash.addEventListener('click', function removeFavoriteBook() {
+                favoriteBook.parentElement.removeChild(favoriteBook);
+                sessionStorage.removeItem(bookId);
+        });
+
 };
-
-
-//***********RETIRER UN LIVRE DE LA POCHLIST ******************/
-
-
-// function removeFavoriteBook() {
-        
-
-//         let favoriteBook = document.getElementById(bookId);
-//         console.log(bookId);
-//         let bookshelf = document.querySelector('.bookshelf');
-
-//         localStorage.removeItem(bookId);
-//         bookshelf.removeChild(favoriteBook);
-
-// }
-
-// window.onload = storageBook();
