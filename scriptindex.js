@@ -1,3 +1,4 @@
+window.onload
 
 // ****************AFFICHER-MASQUER FORMULAIRE*****************//
 const form = document.querySelector('.form');
@@ -10,20 +11,20 @@ const btnCancel = document.querySelector('.btnCancel')
 btnNewBook.addEventListener('click', function showForm() {
         form.style.display = 'block';
         newBook.style.display = 'none';
+        booksList.innerHTML = "";
 });
 
 //revenir à l'accueil - masquer formulaire
 btnCancel.addEventListener('click', function cancel() {
         form.style.display = 'none';
         newBook.style.display = 'block';
+        
 });
-
 
 //*********LANCER UNE RECHERCHE*********/
 
 const btnSearchBooks = document.querySelector('.btnSearchBooks');
-let search = '';
-
+let booksList = document.querySelector('.booksList');
 
 btnSearchBooks.addEventListener('click', function (e) {
         e.preventDefault();
@@ -31,8 +32,17 @@ btnSearchBooks.addEventListener('click', function (e) {
         const fetchBook = () => {
                 let valueTitle = document.querySelector('.valueTitle').value;
                 let valueAuthors = document.querySelector('.valueAuthor').value;
+<<<<<<< HEAD
                 search = valueTitle + '+inauthor:' + valueAuthors + '&key=AIzaSyBzPLXXa28wePRlPydq-cwJUNk1sP7W4Hg'
                 const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
+=======
+
+                const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` +
+                        valueTitle +
+                        '+inauthor:' +
+                        valueAuthors +
+                        '&key=AIzaSyBzPLXXa28wePRlPydq-cwJUNk1sP7W4Hg';
+>>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
                 fetch(apiGoogleBooks)
                         .then(function (res) {
@@ -50,7 +60,10 @@ btnSearchBooks.addEventListener('click', function (e) {
                                         alert("Aucun Résultat");
                                 }
                                 else {
+<<<<<<< HEAD
                                         let booksList = document.querySelector('.booksList');
+=======
+>>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
                                         booksList.innerHTML = "";
                                         data.items.forEach((book) => {
                                                 createBook(book); // création des livres
@@ -64,14 +77,15 @@ btnSearchBooks.addEventListener('click', function (e) {
         };
 
         fetchBook();
-});
 
+<<<<<<< HEAD
+=======
+});
+>>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
 //*********Création des sections livres pour le résultat de la recherche*********/
 
-
 function createBook(book) {
-        let booksList = document.querySelector('.booksList');
         let booksCard = document.createElement('section');
         booksCard.className = 'bookCard';
         booksCard.setAttribute("id", book.id);
@@ -97,12 +111,12 @@ function createBook(book) {
         booksCard.innerHTML = `
         <header>
         <div class="iconBookmark" ><i class="fas fa-bookmark" onclick = storageBook('${book.id}')></i></div>        
-        <h3 class="title">${book.volumeInfo.title}</h3>   
         </header>
-        <h4 class="authors">${authors}</h4>
-        <p class="idBook" >ID : ${book.id}<p>
-        <p class="description">${description}...</p><br>
-        <img class="imgBook" src="${imgBook}" style="width: auto;">
+        <div class="title"><h3>${book.volumeInfo.title}</h3></div> 
+        <div class="authors"><h4>${authors}</h4></div>
+        <div class="idBook"><p>ID : ${book.id}<p></div>
+        <div class="description"><p>${description}...</p></div>
+        <div class="imgBook"><img src="${imgBook}"></div>
         `;
 
         booksList.appendChild(booksCard);
@@ -110,6 +124,7 @@ function createBook(book) {
 };
 
 
+<<<<<<< HEAD
 //***********AJOUTER DES LIVRES DANS LA POCHLIST******************/
 
 
@@ -146,9 +161,27 @@ const storageBook = (bookId) => {
 
 
 
+=======
+//***********FONCTION POUR ENREGISTRER LES LIVRES FAVORIS ******************/
 
-//***********RETIRER UN LIVRE DE LA POCHLIST ******************/
+function storageBook(bookId) {
 
+        const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
+        sessionStorage.setItem(bookId, apiGoogleBooks);
+
+        if (bookId === sessionStorage.getItem(bookId)) {
+                alert('Vous ne pouvez ajouter deux fois le même livre')
+        } else {
+>>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
+
+                //cloner le bookCard dans la pochlist
+                let favoriteBook = document.createElement('section');
+                favoriteBook.setAttribute("id", bookId);
+                favoriteBook = document.getElementById(bookId);
+                let booksCard = document.getElementById(bookId);
+                let bookshelf = document.querySelector('.bookshelf');
+
+<<<<<<< HEAD
 function removeFavoriteBook(bookId) {
         let favoriteBook = document.querySelector(bookId);
         let bookshelf = document.querySelector('.bookshelf');
@@ -157,5 +190,23 @@ function removeFavoriteBook(bookId) {
         bookshelf.removeChild(favoriteBook);
 
 }
+=======
+                favoriteBook = booksCard.cloneNode(true);
+                bookshelf.appendChild(favoriteBook);
 
+                // remplacer le bookmark par une corbeille
+                let iconBookmark = favoriteBook.querySelector('.iconBookmark');
+                let iconTrash = document.createElement('div');
+                iconTrash.className = 'iconTrash';
+                iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
+                iconBookmark.replaceWith(iconTrash);
+>>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
+                //supprimer le favoriteBook de la pochlist et du sessionStorage
+                iconTrash.addEventListener('click', function removeFavoriteBook() {
+                        favoriteBook.parentElement.removeChild(favoriteBook);
+                        sessionStorage.removeItem(bookId);
+                });
+        }
+
+};
