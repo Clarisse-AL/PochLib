@@ -32,17 +32,12 @@ btnSearchBooks.addEventListener('click', function (e) {
         const fetchBook = () => {
                 let valueTitle = document.querySelector('.valueTitle').value;
                 let valueAuthors = document.querySelector('.valueAuthor').value;
-<<<<<<< HEAD
-                search = valueTitle + '+inauthor:' + valueAuthors + '&key=AIzaSyBzPLXXa28wePRlPydq-cwJUNk1sP7W4Hg'
-                const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=${search}`;
-=======
 
                 const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` +
                         valueTitle +
                         '+inauthor:' +
                         valueAuthors +
                         '&key=AIzaSyBzPLXXa28wePRlPydq-cwJUNk1sP7W4Hg';
->>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
                 fetch(apiGoogleBooks)
                         .then(function (res) {
@@ -60,10 +55,6 @@ btnSearchBooks.addEventListener('click', function (e) {
                                         alert("Aucun Résultat");
                                 }
                                 else {
-<<<<<<< HEAD
-                                        let booksList = document.querySelector('.booksList');
-=======
->>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
                                         booksList.innerHTML = "";
                                         data.items.forEach((book) => {
                                                 createBook(book); // création des livres
@@ -78,10 +69,7 @@ btnSearchBooks.addEventListener('click', function (e) {
 
         fetchBook();
 
-<<<<<<< HEAD
-=======
 });
->>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
 //*********Création des sections livres pour le résultat de la recherche*********/
 
@@ -124,44 +112,6 @@ function createBook(book) {
 };
 
 
-<<<<<<< HEAD
-//***********AJOUTER DES LIVRES DANS LA POCHLIST******************/
-
-
-const storageBook = (bookId) => {
-
-        //enregistrer le livre dans le sessionStorage
-
-        const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
-        let setBooksInfo = sessionStorage.setItem(bookId, apiGoogleBooks);
-
-        // remplacer le bookmark par une corbeille
-        let bookCard = document.getElementById(bookId);
-        let favoriteBook = document.createElement('section');
-        let bookshelf = document.querySelector('.bookshelf');
-        favoriteBook.className = 'favoriteBook';
-
-        favoriteBook = document.querySelector('.favoriteBook');
-        let iconBookmark = document.querySelector('.iconBookmark');
-        let iconTrash = document.createElement('div');
-        iconTrash.className = 'iconTrash';
-        iconTrash.innerHTML = '<i class="fas fa-trash" onclick="removeFavoriteBook(bookId)"></i>';
-        iconBookmark.replaceChild(iconTrash, iconBookmark);
-        favoriteBook.appendChild(iconTrash);
-        
-        //cloner le bookCard dans la pochlist
-        favoriteBook = bookCard.cloneNode(true);
-        bookshelf.appendChild(favoriteBook);
-
-        // alert("Ce livre fait déjà parti de votre sélection");             
-};
-
-
-
-
-
-
-=======
 //***********FONCTION POUR ENREGISTRER LES LIVRES FAVORIS ******************/
 
 function storageBook(bookId) {
@@ -172,7 +122,6 @@ function storageBook(bookId) {
         if (sessionStorage.getItem(bookId)) {
                 alert('Vous ne pouvez ajouter deux fois le même livre')
         } else {
->>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
                 //cloner le bookCard dans la pochlist
                 let favoriteBook = document.createElement('section');
@@ -181,16 +130,6 @@ function storageBook(bookId) {
                 let booksCard = document.getElementById(bookId);
                 let bookshelf = document.querySelector('.bookshelf');
 
-<<<<<<< HEAD
-function removeFavoriteBook(bookId) {
-        let favoriteBook = document.querySelector(bookId);
-        let bookshelf = document.querySelector('.bookshelf');
-
-        sessionStorage.removeItem(bookId);
-        bookshelf.removeChild(favoriteBook);
-
-}
-=======
                 favoriteBook = booksCard.cloneNode(true);
                 bookshelf.appendChild(favoriteBook);
 
@@ -200,7 +139,6 @@ function removeFavoriteBook(bookId) {
                 iconTrash.className = 'iconTrash';
                 iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
                 iconBookmark.replaceWith(iconTrash);
->>>>>>> 93f8739e3bd07baa9cefafbb9e87db9f1d1943c7
 
                 sessionStorage.setItem(bookId, favoriteBook.innerHTML);
 
@@ -215,7 +153,6 @@ function removeFavoriteBook(bookId) {
 
 window.onload = function () {
 
-        // Function to be executed
         let bookshelf = document.querySelector('.bookshelf');
         
 
