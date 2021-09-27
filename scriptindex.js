@@ -18,7 +18,7 @@ btnNewBook.addEventListener('click', function showForm() {
 btnCancel.addEventListener('click', function cancel() {
         form.style.display = 'none';
         newBook.style.display = 'block';
-        
+
 });
 
 //*********LANCER UNE RECHERCHE*********/
@@ -116,10 +116,10 @@ function createBook(book) {
 
 function storageBook(bookId) {
 
-        const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
-        sessionStorage.setItem(bookId, apiGoogleBooks);
+        // const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
 
-        if (bookId === sessionStorage.getItem(bookId)) {
+
+        if (sessionStorage.getItem(bookId)) {
                 alert('Vous ne pouvez ajouter deux fois le même livre')
         } else {
 
@@ -140,6 +140,8 @@ function storageBook(bookId) {
                 iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
                 iconBookmark.replaceWith(iconTrash);
 
+                sessionStorage.setItem(bookId, favoriteBook.innerHTML);
+
                 //supprimer le favoriteBook de la pochlist et du sessionStorage
                 iconTrash.addEventListener('click', function removeFavoriteBook() {
                         favoriteBook.parentElement.removeChild(favoriteBook);
@@ -148,3 +150,31 @@ function storageBook(bookId) {
         }
 
 };
+
+window.onload = function () {
+
+        // Function to be executed
+        let bookshelf = document.querySelector('.bookshelf');
+        
+
+        for (var i = 0; i < sessionStorage.length; i++){
+        
+                let value = sessionStorage.getItem(sessionStorage.key(i));
+                let bookId = sessionStorage.key(i);
+
+                if(bookId != "IsThisFirstTime_Log_From_LiveServer"){
+                        let favoriteBook = document.createElement('section');
+                        favoriteBook.setAttribute("id", bookId);
+                        favoriteBook.innerHTML = value;
+                        bookshelf.appendChild(favoriteBook);
+                        
+                }
+
+                
+
+                console.log("onload:"+i+"/"+bookId);
+            }
+        
+
+        
+}

@@ -13,19 +13,20 @@ h1
     text-align: center;
 }
 
+/* FORM */
 label
 {
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 1.1em;
-    text-align: center;
 }
 
-input
+input[type=search] 
 {
+    height: 25px;
+    width: 100%;
     border: 1px solid grey;
-    border-radius: 5%;
-    
+    border-radius: 1%;
 }
 
 .booksList, .bookshelf
@@ -37,12 +38,19 @@ input
 section{
     font-family: 'Roboto', sans-serif;
     font-weight: 900;
-    text-align: justify;
-    box-shadow: 10px 5px 5px grey;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     padding: 20px;
     border-radius: 5px;
     margin: 8px 8px 8px 8px;
-    
+}
+
+h3
+{
+font-family: 'Koh Santepheap', cursive;
+}
+
+.description{
+    text-align: justify;
 }
 
 .idBook{
@@ -50,14 +58,13 @@ section{
     font-size: small;
 }
 
-.imgBook{
-    width: auto;
-    height: 200px;
+img{
     display: flex;
     margin: auto;
-    top: 5%;
+    width: auto;
+    height: 150px;
+    border-radius: 5%;
 }
-
 
 .newBook, .searchResult, .pochlist
 {
@@ -73,65 +80,53 @@ section{
     display: none;
 }
 
-.btnNewBook
-{
-    background-color: #14aca4;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px 10px 20px;
-    display: flex;
-    margin: auto;  
-}
 
-.btnSearchBooks
+
+.btnNewBook, .btnSearchBooks
 {
-    background-color: #14aca4;
+    background-color: #14aca4; ;
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px 10px 20px;
     margin: 15px 0px 15px 0px;
+    width: 100%;
 }
 .btnCancel
 {
-    background-color: hsl(11, 70%, 51%);
+    background-color: rgba(209, 42, 0, 0.644);
     color: white;
     border: none;
     border-radius: 5px;
     padding: 10px 20px 10px 20px;
     margin: 15px 0px 15px 0px;
+    width: 100%;
 }
 
 .iconBookmark, .iconTrash
-    {
-        display: block;
-        font-size: 28px;
-        color: #14aca4; 
-        position: relative;
-        bottom: 20%;
-        left: 92%;
-    }
+{
+    display: block;
+    font-size: 28px;
+    color: #14aca4; 
+    position: relative;
+    bottom: 20%;
+    left: 92%;
+}
 
 .booksList, .bookshelf
-    {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        grid-gap: 5px;
-    }
+{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 5px;
+}
 
 
 .idBook
 {
-        font-style: italic;
-        font-size: small;
+    font-style: italic;
+    font-size: small;
 }
     
-.imgBook
-{
-    width: auto;
-}
-
 
 
 /* Media queries */
@@ -153,3 +148,5 @@ section{
        
 }
    
+
+
