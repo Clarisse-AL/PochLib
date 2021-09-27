@@ -61,7 +61,7 @@ font-family: 'Koh Santepheap', cursive;
 img{
     display: flex;
     margin: auto;
-    width: auto;
+    width:  auto;
     height: 150px;
     border-radius: 5%;
 }
@@ -127,6 +127,11 @@ img{
     font-size: small;
 }
     
+
+.imgBook
+{
+    width: auto;
+}
 
 
 /* Media queries */
