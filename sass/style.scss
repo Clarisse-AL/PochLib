@@ -1,0 +1,161 @@
+@import "variables.scss";
+
+// ------------- DOCUMENT-----------//
+
+body{
+
+    margin: 0;
+	padding: 5px;
+	box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+    color: $lightgrey;
+    background-color: $darkgrey;
+
+        img {
+            width: auto;
+            height: 200px;
+            display: flex;
+            margin: auto;
+            border-radius: 5%;
+        }
+    
+        header{
+            background-color: white;
+        }
+
+        h2{
+            text-align: center;
+        }
+
+        section{
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            padding: 20px;
+            border-radius: 5px;
+            margin: 15px 5px 15px 5px;
+            background: white;
+            color: $emeraude;
+            position: relative;
+        
+            header{
+                font-family: 'Koh Santepheap', cursive;
+                color: $emeraude;
+                font-weight: bolder;
+            }
+
+        }
+        form{
+            align-items: center;
+            justify-content: center;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+        }
+
+        label{
+            margin: 15px;
+            font-size: 1.2em;
+            
+        }
+    
+        input[type=search] {
+            height: 35px;
+            width: 100%;
+            border:0px ;
+            border-radius: 20px;
+            margin: 2px;
+            &:focus {
+                border: 2px solid $lightgrey;
+                }
+        }
+
+        button {
+            font-family: 'Roboto', sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+            color: $lightgrey;
+            border: none;
+            border-radius: 20px;
+            padding: 10px 20px 10px 20px;
+            margin: 2px;
+            width: 100%;
+        }
+}
+
+
+// ------------- ELEMENT PRECIS ----------------//
+
+.idBook{
+    font-style: italic;
+    font-size: small;
+}
+
+.description{
+    text-align: justify;
+}
+
+.btnNewBook, .btnSearchBooks{
+    @extend button;
+    background-color: $turquoise; 
+}
+
+.btnCancel{
+    @extend button;
+    background-color: $emeraude;
+}
+
+.form, .searchResult{
+    display: none;
+}
+
+.iconBookmark, .iconTrash{
+    display: block;
+    font-size: 28px;
+    color: $turquoise; 
+    position: relative;
+    bottom: 20%;
+    left: 92%;
+
+    &:active{
+        color: $violet;
+    }
+}
+
+
+// -------------- RESPONSIVE ----------------//
+
+
+@media only screen and (min-width: $largeDesktop) { 
+    .booksList, .bookshelf{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 5px;
+    } 
+}
+
+@media only screen and (max-width: $laptop) { 
+    .booksList, .bookshelf{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 5px;
+    }
+}
+
+@media only screen and (max-width: $tablet) { 
+    .booksList, .bookshelf{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 5px;
+    }
+}
+
+@media only screen and (max-width: $mobile) { 
+    .booksList, .bookshelf{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+}
+    form{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+    } 
+}

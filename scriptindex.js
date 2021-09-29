@@ -1,11 +1,10 @@
-window.onload
-
 // ****************AFFICHER-MASQUER FORMULAIRE*****************//
 const form = document.querySelector('.form');
 const newBook = document.querySelector('.newBook');
 
 const btnNewBook = document.querySelector('.btnNewBook');
 const btnCancel = document.querySelector('.btnCancel')
+const searchResult = document.querySelector('.searchResult');
 
 //afficher formulaire
 btnNewBook.addEventListener('click', function showForm() {
@@ -18,6 +17,7 @@ btnNewBook.addEventListener('click', function showForm() {
 btnCancel.addEventListener('click', function cancel() {
         form.style.display = 'none';
         newBook.style.display = 'block';
+        searchResult.style.display = 'none';
 
 });
 
@@ -28,6 +28,9 @@ let booksList = document.querySelector('.booksList');
 
 btnSearchBooks.addEventListener('click', function (e) {
         e.preventDefault();
+
+
+        searchResult.style.display = 'block';
 
         const fetchBook = () => {
                 let valueTitle = document.querySelector('.valueTitle').value;
@@ -82,29 +85,36 @@ function createBook(book) {
         let imgBook = "";
         let authors = "";
 
-        if (book)
 
-                if (book.volumeInfo.authors === undefined || book.volumeInfo.authors === null
-                        && book.volumeInfo.description === undefined || book.volumeInfo.description === null
-                        && book.volumeInfo.imageLinks === undefined || book.volumeInfo.imageLinks === null) {
-                        authors = "Information manquante";
-                        description = "Information manquante";
-                        imgBook = "image/unavailable.png";
-                } else {
-                        authors = book.volumeInfo.authors[0];
-                        description = book.volumeInfo.description.substring(0, 200);
-                        imgBook = book.volumeInfo.imageLinks.thumbnail;
-                };
+        if (book.volumeInfo.authors === undefined || book.volumeInfo.authors === null) {
+                authors = "Information manquante";
+        } else {
+                authors = book.volumeInfo.authors[0];
+        };
+
+        if (book.volumeInfo.description === undefined || book.volumeInfo.description === null) {
+                description = "Information manquante";
+        } else {
+                description = book.volumeInfo.description.substring(0, 200);
+        };
+
+        if (book.volumeInfo.imageLinks === undefined || book.volumeInfo.imageLinks === null) {
+                imgBook = "image/unavailable.png";
+        } else {
+                imgBook = book.volumeInfo.imageLinks.thumbnail;
+        };
 
         booksCard.innerHTML = `
         <header>
         <div class="iconBookmark" ><i class="fas fa-bookmark" onclick = storageBook('${book.id}')></i></div>        
+        <div class="title"><h3>${book.volumeInfo.title}</h3></div>
         </header>
-        <div class="title"><h3>${book.volumeInfo.title}</h3></div> 
         <div class="authors"><h4>${authors}</h4></div>
         <div class="idBook"><p>ID : ${book.id}<p></div>
         <div class="description"><p>${description}...</p></div>
+        <footer>
         <div class="imgBook"><img src="${imgBook}"></div>
+        </footer>
         `;
 
         booksList.appendChild(booksCard);
@@ -115,9 +125,6 @@ function createBook(book) {
 //***********FONCTION POUR ENREGISTRER LES LIVRES FAVORIS ******************/
 
 function storageBook(bookId) {
-
-        // const apiGoogleBooks = `https://www.googleapis.com/books/v1/volumes?q=` + bookId;
-
 
         if (sessionStorage.getItem(bookId)) {
                 alert('Vous ne pouvez ajouter deux fois le même livre')
@@ -155,25 +162,18 @@ window.onload = function () {
 
         let bookshelf = document.querySelector('.bookshelf');
         
+        for (var i = 0; i < sessionStorage.length; i++) {
 
-        for (var i = 0; i < sessionStorage.length; i++){
-        
                 let value = sessionStorage.getItem(sessionStorage.key(i));
                 let bookId = sessionStorage.key(i);
 
-                if(bookId != "IsThisFirstTime_Log_From_LiveServer"){
+                if (bookId != "IsThisFirstTime_Log_From_LiveServer") {
                         let favoriteBook = document.createElement('section');
                         favoriteBook.setAttribute("id", bookId);
                         favoriteBook.innerHTML = value;
                         bookshelf.appendChild(favoriteBook);
-                        
                 }
+                console.log("onload:" + i + "/" + bookId);
+        }
 
-                
-
-                console.log("onload:"+i+"/"+bookId);
-            }
-        
-
-        
 }

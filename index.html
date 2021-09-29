@@ -5,7 +5,7 @@
 	<title>Poch'Lib</title>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="styleindex.css" />
+	<link rel="stylesheet" href="sass\style.css" />
 	<style>
 		@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
 		@import url('https://fonts.googleapis.com/css2?family=Koh+Santepheap:wght@100&display=swap');
@@ -25,12 +25,12 @@
 	</header>
 
 	<div class="newBook">
-		<h1>Nouveau Livre</h1>
+		<h2>Nouveau Livre</h2>
 		<button class="btnNewBook">Ajouter un livre</button>
 	</div>
 
 	<div class="form">
-		<h1>Nouveau Livre</h1>
+		<h2>Nouveau Livre</h2>
 		<form>
 			<div>
 				<label for="title">Titre du livre</label>
@@ -40,7 +40,7 @@
 			<div>
 				<label for="author">Auteur</label>
 				<br>
-				<input class="valueAuthor" type="search" name="author" id="author" accesskey="enter"/>
+				<input class="valueAuthor" type="search" name="author" id="author" accesskey="enter" />
 			</div>
 			<div>
 				<input type="submit" class="btnSearchBooks" value="Rechercher">
@@ -49,24 +49,22 @@
 				<input type="reset" class="btnCancel" value="Annuler">
 			</div>
 		</form>
+	</div>
 
-		<div class="searchResult">
-			<h1>Résultat de la recherche</h1>
-			<div class="booksList"></div>
-		</div>
-
+	<div class="searchResult">
+		<h2>Résultat de la recherche</h2>
+		<div class="booksList"></div>
 	</div>
 
 
-
 	<div class="pochlist">
-		<h1>Ma poch'liste</h1>
+		<h2>Ma poch'liste</h2>
 		<div class="bookshelf"></div>
 	</div>
 
 
 	<script src="scriptindex.js"></script>
-	
+
 
 </body>
 
