@@ -15,6 +15,9 @@ body img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   margin: auto;
   border-radius: 5%;
 }
@@ -25,37 +28,24 @@ body header {
 
 body h2 {
   text-align: center;
+  border-top: 2px #e9e9e9;
 }
 
 body section {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 20px;
   border-radius: 5px;
-  margin: 15px 5px 15px 5px;
+  margin: 5px;
   background: white;
   color: #24615B;
-  position: relative;
+  display: flexbox;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
 }
 
-body section header {
+body section section > header {
   font-family: 'Koh Santepheap', cursive;
   color: #24615B;
   font-weight: bolder;
-}
-
-body form {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[2];
-      grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
 }
 
 body label {
@@ -121,48 +111,37 @@ body button, body .btnNewBook, body .btnSearchBooks, body .btnCancel {
   color: #52547A;
 }
 
-@media only screen and (min-width: 2560px) {
+.booksList, .bookshelf {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+}
+
+@media (max-width: 2560px) {
   .booksList, .bookshelf {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
   }
 }
 
-@media only screen and (max-width: 1024px) {
+@media (max-width: 1024px) {
   .booksList, .bookshelf {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[3];
         grid-template-columns: repeat(3, 1fr);
-    grid-gap: 5px;
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media (max-width: 768px) {
   .booksList, .bookshelf {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-    grid-gap: 5px;
-  }
-}
-
-@media only screen and (max-width: 425px) {
-  .booksList, .bookshelf {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
-  }
-  form {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[1];
-        grid-template-columns: repeat(1, 1fr);
   }
 }
 /*# sourceMappingURL=style.css.map */

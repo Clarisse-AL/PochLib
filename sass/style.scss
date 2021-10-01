@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 // ------------- DOCUMENT-----------//
 
@@ -16,6 +17,7 @@ body{
             width: auto;
             height: 200px;
             display: flex;
+            align-items: flex-end;
             margin: auto;
             border-radius: 5%;
         }
@@ -26,30 +28,26 @@ body{
 
         h2{
             text-align: center;
+            border-top: 2px $lightgrey;
         }
 
         section{
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            
             padding: 20px;
             border-radius: 5px;
-            margin: 15px 5px 15px 5px;
+            margin: 5px;
             background: white;
             color: $emeraude;
-            position: relative;
+            display: flexbox;
+            align-content: space-between;
+            
         
-            header{
+            section>header{
                 font-family: 'Koh Santepheap', cursive;
                 color: $emeraude;
                 font-weight: bolder;
             }
 
-        }
-        form{
-            align-items: center;
-            justify-content: center;
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            grid-gap: 20px;
         }
 
         label{
@@ -121,41 +119,25 @@ body{
     }
 }
 
+//----------RESPONSIVE---------//
 
-// -------------- RESPONSIVE ----------------//
+.booksList, .bookshelf{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
 
-
-@media only screen and (min-width: $largeDesktop) { 
-    .booksList, .bookshelf{
+    @media (max-width: $largeDesktop){
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        grid-gap: 5px;
-    } 
-}
+    }
 
-@media only screen and (max-width: $laptop) { 
-    .booksList, .bookshelf{
+    @media (max-width: $laptop){
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        grid-gap: 5px;
     }
-}
 
-@media only screen and (max-width: $tablet) { 
-    .booksList, .bookshelf{
+    @media (max-width: $tablet){
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        grid-gap: 5px;
     }
-}
 
-@media only screen and (max-width: $mobile) { 
-    .booksList, .bookshelf{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-}
-    form{
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-    } 
-}
+} 

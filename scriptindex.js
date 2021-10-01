@@ -112,9 +112,7 @@ function createBook(book) {
         <div class="authors"><h4>${authors}</h4></div>
         <div class="idBook"><p>ID : ${book.id}<p></div>
         <div class="description"><p>${description}...</p></div>
-        <footer>
         <div class="imgBook"><img src="${imgBook}"></div>
-        </footer>
         `;
 
         booksList.appendChild(booksCard);
