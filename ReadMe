@@ -1,0 +1,13 @@
+Poch'Lib Application
+
+Is a web application for allowing the user to search for books online, and select which ones you want to add to favorites.
+
+Installing the project :
+
+• Unzip the file • Open index.html
+
+Instruction to compile CSS :
+
+The CSS Code was created with SCSS. To use it, download "live sass compiler" on VScode.
+
+• click on "watch sass" at the bottom of the window, the compilation will be done automatically.
