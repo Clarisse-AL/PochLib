@@ -1,4 +1,5 @@
 @import "variables.scss";
+@import "mixins.scss";
 
 // ------------- DOCUMENT-----------//
 
@@ -16,6 +17,7 @@ body{
             width: auto;
             height: 200px;
             display: flex;
+            align-items: flex-end;
             margin: auto;
             border-radius: 5%;
         }
@@ -26,25 +28,35 @@ body{
 
         h2{
             text-align: center;
+            border-top: 2px $lightgrey;
         }
 
         section{
-            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            
             padding: 20px;
             border-radius: 5px;
-            margin: 15px 5px 15px 5px;
+            margin: 5px;
             background: white;
             color: $emeraude;
+<<<<<<< HEAD
             // position: relative;
+=======
+            display: flexbox;
+            align-content: space-between;
+            
+>>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
         
-            header{
+            section>header{
                 font-family: 'Koh Santepheap', cursive;
                 color: $emeraude;
                 font-weight: bolder;
             }
 
         }
+<<<<<<< HEAD
         
+=======
+>>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
 
         label{
             margin: 15px;
@@ -115,8 +127,11 @@ body{
     }
 }
 
+//----------RESPONSIVE---------//
 
-// -------------- RESPONSIVE ----------------//
+.booksList, .bookshelf{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
 
 .booksList, .bookshelf{
 

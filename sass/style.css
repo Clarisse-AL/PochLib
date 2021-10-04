@@ -15,6 +15,9 @@ body img {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
   margin: auto;
   border-radius: 5%;
 }
@@ -25,20 +28,21 @@ body header {
 
 body h2 {
   text-align: center;
+  border-top: 2px #e9e9e9;
 }
 
 body section {
-  -webkit-box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-          box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   padding: 20px;
   border-radius: 5px;
-  margin: 15px 5px 15px 5px;
+  margin: 5px;
   background: white;
   color: #24615B;
-  position: relative;
+  display: flexbox;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
 }
 
-body section header {
+body section section > header {
   font-family: 'Koh Santepheap', cursive;
   color: #24615B;
   font-weight: bolder;
@@ -107,16 +111,27 @@ body button, body .btnNewBook, body .btnSearchBooks, body .btnCancel {
   color: #52547A;
 }
 
+<<<<<<< HEAD
 @media only screen and (min-width: 768px) and (max-width: 2560px) {
+=======
+.booksList, .bookshelf {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
+}
+
+@media (max-width: 2560px) {
+>>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
   .booksList, .bookshelf {
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[4];
         grid-template-columns: repeat(4, 1fr);
-    grid-gap: 5px;
   }
 }
 
+<<<<<<< HEAD
 @media only screen and (min-width: 768px) and (max-width: 2560px) {
   form {
     -webkit-box-align: center;
@@ -125,11 +140,27 @@ body button, body .btnNewBook, body .btnSearchBooks, body .btnCancel {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+=======
+@media (max-width: 1024px) {
+  .booksList, .bookshelf {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .booksList, .bookshelf {
+>>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
+<<<<<<< HEAD
     grid-gap: 20px;
+=======
+>>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
   }
 }
 /*# sourceMappingURL=style.css.map */

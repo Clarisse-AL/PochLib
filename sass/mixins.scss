@@ -1,0 +1,26 @@
+//-------------RESPONSIVE------------//
+
+@mixin mobile {
+    @media screen and (max-width: #{$mobile}) {
+        @content;
+    }
+}
+  
+@mixin tablet {
+    @media screen and (max-width: #{$tablet}) {
+        @content;
+    }
+}
+  
+@mixin laptop {
+    @media screen and (max-width: #{$tablet}) {
+        @content;
+    }
+}
+  
+@mixin largeDesktop {
+    @media screen and (max-width: #{$largeDesktop}) {
+        @content;
+    }
+}
+
