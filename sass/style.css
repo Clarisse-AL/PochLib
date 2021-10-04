@@ -37,9 +37,6 @@ body section {
   margin: 5px;
   background: white;
   color: #24615B;
-  display: flexbox;
-  -ms-flex-line-pack: justify;
-      align-content: space-between;
 }
 
 body section section > header {
@@ -111,27 +108,16 @@ body button, body .btnNewBook, body .btnSearchBooks, body .btnCancel {
   color: #52547A;
 }
 
-<<<<<<< HEAD
 @media only screen and (min-width: 768px) and (max-width: 2560px) {
-=======
-.booksList, .bookshelf {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (1fr)[1];
-      grid-template-columns: repeat(1, 1fr);
-}
-
-@media (max-width: 2560px) {
->>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
   .booksList, .bookshelf {
     display: -ms-grid;
     display: grid;
-    -ms-grid-columns: (1fr)[4];
-        grid-template-columns: repeat(4, 1fr);
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
   }
 }
 
-<<<<<<< HEAD
 @media only screen and (min-width: 768px) and (max-width: 2560px) {
   form {
     -webkit-box-align: center;
@@ -140,27 +126,11 @@ body button, body .btnNewBook, body .btnSearchBooks, body .btnCancel {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
-=======
-@media (max-width: 1024px) {
-  .booksList, .bookshelf {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (1fr)[3];
-        grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .booksList, .bookshelf {
->>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: (1fr)[2];
         grid-template-columns: repeat(2, 1fr);
-<<<<<<< HEAD
     grid-gap: 20px;
-=======
->>>>>>> 0720626220c2bc81becc7b903abe465ccd56a740
   }
 }
 /*# sourceMappingURL=style.css.map */
