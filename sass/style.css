@@ -108,6 +108,16 @@ body button, body .btnNewBook, body .btnSearchBooks, body .btnCancel {
 }
 
 @media only screen and (min-width: 768px) and (max-width: 2560px) {
+  .booksList, .bookshelf {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[4];
+        grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 2560px) {
   form {
     -webkit-box-align: center;
         -ms-flex-align: center;

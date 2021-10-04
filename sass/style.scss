@@ -35,7 +35,7 @@ body{
             margin: 15px 5px 15px 5px;
             background: white;
             color: $emeraude;
-            position: relative;
+            // position: relative;
         
             header{
                 font-family: 'Koh Santepheap', cursive;
@@ -118,33 +118,22 @@ body{
 
 // -------------- RESPONSIVE ----------------//
 
-// .booksList, .bookshelf{
+.booksList, .bookshelf{
 
-//     @media only screen and (min-width: $largeDesktop) { 
+    @media only screen and (min-width:$laptop) and (max-width: $largeDesktop){ 
         
-//         display: grid;
-//         grid-template-columns: repeat(4, 1fr);
-//         grid-gap: 5px;
-       
-//     }
-    
-//     @media only screen and (max-width: $laptop) { 
-        
-//         display: grid;
-//         grid-template-columns: repeat(3, 1fr);
-//         grid-gap: 5px;
-        
-//     }
-    
-//     @media only screen and (max-width: $tablet) { 
-        
-//         display: grid;
-//         grid-template-columns: repeat(2, 1fr);
-//         grid-gap: 5px;
-       
-//     }
+        // display: grid;
+        // grid-template-columns: repeat(3, 1fr);
+        // grid-gap: 5px;
 
-// }
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: space-between;
+       
+    }
+    
+}
 
 
 
