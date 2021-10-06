@@ -9,34 +9,30 @@ body{
 	box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
     font-weight: bolder;
-    color: $lightgrey;
-    background-color: $darkgrey;
+    overflow-x: hidden;
 
         img {
             width: auto;
             height: 200px;
             display: flex;
-            align-items: flex-end;
-            margin: auto;
+            margin: 0 auto;
             border-radius: 5%;
         }
     
-        header{
-            background-color: white;
-        }
-
         h2{
             text-align: center;
-            border-top: 2px $lightgrey;
         }
 
         section{
             
             padding: 20px;
+            padding-bottom: 205px;
             border-radius: 5px;
+            border: 1px solid $darkgrey;
             margin: 5px;
-            background: white;
+            background: $lightgrey;
             color: $emeraude;
+            position: relative;
           
             section>header{
                 font-family: 'Koh Santepheap', cursive;
@@ -55,11 +51,11 @@ body{
         input[type=search] {
             height: 35px;
             width: 100%;
-            border:0px ;
-            border-radius: 20px;
+            border: 1px $lightgrey solid;
+            border-radius: 2px;
             margin: 2px;
-            &:focus {
-                border: 2px solid $lightgrey;
+            &:hover {
+                background-color: $lightgrey;
                 }
         }
 
@@ -67,12 +63,12 @@ body{
             font-family: 'Roboto', sans-serif;
             font-weight: bold;
             font-size: 1rem;
-            color: $lightgrey;
+            color: white;
             border: none;
-            border-radius: 20px;
+            border-radius: 5px;
             padding: 10px 20px 10px 20px;
             margin: 2px;
-            width: 100%;
+            width: 300px;
         }
 }
 
@@ -88,14 +84,25 @@ body{
     text-align: justify;
 }
 
-.btnNewBook, .btnSearchBooks{
-    @extend button;
-    background-color: $turquoise; 
+.newBook{
+    text-align: center;
 }
+
+.btnSearchBooks, .btnNewBook{
+    @extend button;
+    background-color: $turquoise;   
+}
+
+
 
 .btnCancel{
     @extend button;
-    background-color: $emeraude;
+    background-color: $magenta;
+}
+
+.newBook, .form, .searchResult, .pochlist{
+    border-top: $lightgrey solid 2px;
+    margin-top: 10px;
 }
 
 .form, .searchResult{
@@ -115,6 +122,14 @@ body{
     }
 }
 
+.imgBook{
+    @extend img;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 //----------RESPONSIVE---------/
 
 
@@ -132,14 +147,14 @@ body{
 
 
 
-form{
-    @media only screen and (min-width:$tablet) and (max-width: $largeDesktop) { 
-        align-items: center;
-        justify-content: center;
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        grid-gap: 20px;
-    }
+// form{
+//     @media only screen and (min-width:$tablet) and (max-width: $largeDesktop) { 
+//         align-items: center;
+//         justify-content: center;
+//         display: grid;
+//         grid-template-columns: repeat(2, 1fr);
+//         grid-gap: 20px;
+//     }
 
-} 
+// } 
 

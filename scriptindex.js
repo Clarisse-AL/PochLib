@@ -156,11 +156,13 @@ function storageBook(bookId) {
 
 };
 
+
+//***********FONCTION POUR AFFICHER LES LIVRES FAVORIS APRES  ******************/
 window.onload = function () {
 
         let bookshelf = document.querySelector('.bookshelf');
         
-        for (var i = 0; i < sessionStorage.length; i++) {
+        for (let i = 0; i < sessionStorage.length; i++) {
 
                 let value = sessionStorage.getItem(sessionStorage.key(i));
                 let bookId = sessionStorage.key(i);
