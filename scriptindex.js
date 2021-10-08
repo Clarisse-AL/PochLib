@@ -142,12 +142,12 @@ function storageBook(bookId) {
                 let iconBookmark = favoriteBook.querySelector('.iconBookmark');
                 let iconTrash = document.createElement('div');
                 iconTrash.className = 'iconTrash';
-                iconTrash.innerHTML = `<i class="fas fa-trash"></i>`;
+                iconTrash.innerHTML = `<i class="fas fa-trash" onclick = deleteBook('${bookId}')></i>`;
                 iconBookmark.replaceWith(iconTrash);
 
                 sessionStorage.setItem(bookId, favoriteBook.innerHTML);
 
-                //supprimer le favoriteBook de la pochlist et du sessionStorage
+                // supprimer le favoriteBook de la pochlist et du sessionStorage
                 iconTrash.addEventListener('click', function removeFavoriteBook() {
                         favoriteBook.parentElement.removeChild(favoriteBook);
                         sessionStorage.removeItem(bookId);
@@ -155,6 +155,22 @@ function storageBook(bookId) {
         }
 
 };
+
+function deleteBook(bookId){
+
+        let selector = '.bookshelf #'+bookId;
+        let bookshelf = document.querySelector('.bookshelf');
+        let favoriteBook = document.getElementById(bookId);
+        // console.log(favoriteBook);
+        console.log(selector);
+
+
+
+        bookshelf.removeChild(favoriteBook);
+        sessionStorage.removeItem(bookId);
+
+}
+
 
 
 //***********FONCTION POUR AFFICHER LES LIVRES FAVORIS APRES  ******************/
