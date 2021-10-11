@@ -156,28 +156,11 @@ function storageBook(bookId) {
 
 };
 
-function deleteBook(bookId){
-
-        let selector = '.bookshelf #'+bookId;
-        let bookshelf = document.querySelector('.bookshelf');
-        let favoriteBook = document.getElementById(bookId);
-        // console.log(favoriteBook);
-        console.log(selector);
-
-
-
-        bookshelf.removeChild(favoriteBook);
-        sessionStorage.removeItem(bookId);
-
-}
-
-
-
-//***********FONCTION POUR AFFICHER LES LIVRES FAVORIS APRES  ******************/
+//***********FONCTION POUR AFFICHER LES LIVRES FAVORIS APRES RAFRAICHISSMENT DE LA PAGE ******************/
 window.onload = function () {
 
         let bookshelf = document.querySelector('.bookshelf');
-        
+
         for (let i = 0; i < sessionStorage.length; i++) {
 
                 let value = sessionStorage.getItem(sessionStorage.key(i));
@@ -191,5 +174,15 @@ window.onload = function () {
                 }
                 console.log("onload:" + i + "/" + bookId);
         }
-
 }
+
+//***********FONCTION POUR SUPPRIMER LES LIVRES FAVORIS APRES RAFRAICHISSMENT DE LA PAGE ******************/
+function deleteBook(bookId) {
+
+        let bookshelf = document.querySelector('.bookshelf');
+        let favoriteBook = document.getElementById(bookId);
+
+        bookshelf.removeChild(favoriteBook);
+        sessionStorage.removeItem(bookId);
+}
+
